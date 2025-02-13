@@ -5,6 +5,7 @@ body {
     background-image: url(bilder/bjbackground.jpg);
     background-size: cover;
 
+
 }
 
 /* Minimal reset: */
@@ -13,11 +14,13 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-family: "Open Sans", sans-serif;
+
 }
 
 img {
     width: 100%;
 }
+
 /* End minimal CSS Reset */
 
 .bhead {
@@ -30,7 +33,7 @@ img {
 
 .bjp {
     font-size: 35px;
-    margin: 40px;
+    margin: 35px;
     text-align: center;
     color: white;
     font-weight: bolder;
@@ -40,21 +43,52 @@ img {
     margin: 20px;
 }
 
+#dealersKort {
+    margin: 30px 0px 30px 0px;
+
+}
+
+#dealersSum {
+    margin: 0px 0px 30px 0px;
+}
+
 #cardEl {
     margin: 20px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+
 }
 
 button {
     width: 250px;
     background: goldenrod;
     height: 70px;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bolder;
     border-radius: 10px;
-    margin: auto;
-    display: block;
     border: none;
     margin-bottom: 20px;
+    cursor: pointer;
+    box-shadow: 8px 15px 15px rgba(0, 0, 0, 0.302);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    border-color: rgba(222, 164, 17, 0.8);
+    background-color: rgb(232, 175, 32);
+    width: 255px;
+    height: 72px;
+}
+
+.spillbut {
+    justify-content: center;
+    margin: auto;
+    display: block;
+    margin-bottom: 30px;
 }
 
 @keyframes fadeIn {
@@ -71,4 +105,5 @@ button {
 
 section {
     animation: fadeIn 2s ease forwards;
+
 }
