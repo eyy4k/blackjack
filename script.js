@@ -78,12 +78,13 @@ function renderGame() {
     sumEl.innerText = "Sum: " + sum
     cardEl.innerText = "Kort: "
 
-    for (let i = 0; i < cards.length; i++)
-         { cardEl.textContent += cards[i];
-            if (i < cards.length - 1) {
-                cardEl.textContent += ", " }
-
+    for (let i = 0; i < cards.length; i++) {
+        cardEl.textContent += cards[i];
+        if (i < cards.length - 1) {
+            cardEl.textContent += ", "
         }
+
+    }
 
     dealerKortEl.textContent = "Dealerens Kort: ???";
     dealerSumEl.textContent = "Dealerens sum: ???";
@@ -114,10 +115,10 @@ function dealersTur() {
     dealerKortEl.textContent = "Dealerens kort: ";
 
     for (let i = 0; i < dealerCards.length; i++) {
-        dealerKortEl.textContent += dealerCards[i]; 
-    
+        dealerKortEl.textContent += dealerCards[i];
+
         if (i < dealerCards.length - 1) {
-            dealerKortEl.textContent += ", "; 
+            dealerKortEl.textContent += ", ";
         }
     }
 
@@ -126,5 +127,23 @@ function dealersTur() {
     dealerSumEl.textContent = "Dealerens Sum: " + dealerSum;
     dealerSumEl.style.color = "black"
 
+    vinner()
+
+}
+
+function vinner() {
+
+    if (dealerSum > 21) { message = "Dealer Røyk! Du Vant!!!"; messageEl.style.color = "green";}
+
+    else if (dealerSum < sum && sum <= 21) { message = "Du Har Høyere Sum! Du Vant!!!"; messageEl.style.color = "green"; }
+
+    else if (dealerSum > sum && dealersSum <= 21) { message = "Du Har Lavere Sum! Du Tapte!!!"; messageEl.style.color = "red"; }
+
+    else if (dealerSum > 21 && sum > 21) {message = "Begge Røyk! Ingen Vant!!!"; messageEl.style.color = "orange";}
+
+    else { message = "Uavgjort! Ingen Vant!!!"; messageEl.style.color = "blue"; }
+
+
+    messageEl.textContent = message;
 
 }
