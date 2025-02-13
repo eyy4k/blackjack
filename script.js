@@ -11,7 +11,7 @@ let dealersSum = 0
 let cards = [];
 let dealerCards = [];
 
-
+let bheadEl = document.querySelector(".bhead")
 let messageEl = document.getElementById("messageEl")
 let sumEl = document.querySelector("#sumEl")
 let cardEl = document.getElementById("cardEl")
@@ -65,18 +65,20 @@ function renderGame() {
         message = "Blackjack!!! Du Vant";
         messageEl.style.color = "green"
         hasBlackJack = true
+        setTimeout(dealersTur, 1000);
     }
 
     else if (sum > 21) {
         message = "Beklager, Du Røyk!";
         messageEl.style.color = "red"
         isAlive = false
+        setTimeout(dealersTur, 1000);
     }
 
     messageEl.innerText = message;
 
-    sumEl.innerText = "Sum: " + sum
-    cardEl.innerText = "Kort: "
+    sumEl.innerText = "Din Sum: " + sum
+    cardEl.innerText = "Dine Kort: "
 
     for (let i = 0; i < cards.length; i++) {
         cardEl.textContent += cards[i];
@@ -86,7 +88,7 @@ function renderGame() {
 
     }
 
-    dealerKortEl.textContent = "Dealerens Kort: ???";
+    dealerKortEl.textContent = "Dealerens Kort: " + dealerCards[0] + " + ???";
     dealerSumEl.textContent = "Dealerens sum: ???";
 
 }
@@ -97,12 +99,16 @@ function newCard() {
     let card = getRandomCard()
     sum += card
     cards.push(card)
-    renderGame()
+    renderGame();
+
+    if (sum >= 21) {
+        setTimeout(dealersTur, 1000);
+    }
 }
 
 function dealersTur() {
 
-    if (!isAlive || hasBlackJack) return;
+    if (dealersrunde) return;
 
     dealersrunde = true
 
@@ -127,17 +133,21 @@ function dealersTur() {
     dealerSumEl.textContent = "Dealerens Sum: " + dealerSum;
     dealerSumEl.style.color = "black"
 
+bheadEl.innerHTML = "Trykk På Start Spillet For Ny Runde"
+bheadEl.style.fontSize = "40px"
+
     vinner()
 
 }
 
 function vinner() {
+    if (!isAlive) return;
 
     if (dealerSum > 21) { message = "Dealer Røyk! Du Vant!!!"; messageEl.style.color = "green";}
 
     else if (dealerSum < sum && sum <= 21) { message = "Du Har Høyere Sum! Du Vant!!!"; messageEl.style.color = "green"; }
 
-    else if (dealerSum > sum && dealersSum <= 21) { message = "Du Har Lavere Sum! Du Tapte!!!"; messageEl.style.color = "red"; }
+    else if (dealerSum > sum && dealerSum <= 21) { message = "Du Har Lavere Sum! Du Tapte!!!"; messageEl.style.color = "red"; }
 
     else if (dealerSum > 21 && sum > 21) {message = "Begge Røyk! Ingen Vant!!!"; messageEl.style.color = "orange";}
 
