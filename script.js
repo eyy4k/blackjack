@@ -155,8 +155,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const bakgrunnsliste = [
         "bilder/bakgrunn.jpg",
-        "bilder/bakgrunn5.jpg",
-        "bilder/bakgrunn7.jpg"]
+        "bilder/bakgrunn2.jpg",
+        "bilder/bakgrunn4.jpg"]
 
         const randomBakgrunn = Math.floor(Math.random() * bakgrunnsliste.length);
         const valgtBakgrunnsbilde = bakgrunnsliste[randomBakgrunn]
