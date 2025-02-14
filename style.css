@@ -120,3 +120,28 @@ section {
     max-width: 1000px;
 }
 
+.scoreboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+   
+}
+
+.scorediv, .dealerdiv {
+
+    width: 250px;
+    background: goldenrod;
+    height: 70px;
+    font-size: 15px;
+    border-radius: 10px;
+    margin: 25px 0px 5px 0px;
+    box-shadow: 8px 15px 15px rgba(0, 0, 0, 0.302);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+

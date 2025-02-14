@@ -19,6 +19,9 @@ let cardEl = document.getElementById("cardEl")
 let dealerKortEl = document.getElementById("dealersKort")
 let dealerSumEl = document.getElementById("dealersSum")
 
+let dealerScoreEl = document.querySelector("#dealerScore")
+let spillerScoreEl = document.querySelector("#spillerScore")
+
 function getRandomCard() {
     let randomNumber = Math.floor(Math.random() * 13) + 1
     if (randomNumber > 10) {
@@ -140,14 +143,17 @@ bheadEl.style.fontSize = "40px"
 
 }
 
+let spillerScore = 0;
+let dealerScore = 0;
+
 function vinner() {
     if (!isAlive) return;
 
-    if (dealerSum > 21) { message = "Dealer Røyk! Du Vant!!!"; messageEl.style.color = "green";}
+    if (dealerSum > 21) { message = "Dealer Røyk! Du Vant!!!"; spillerScore++; messageEl.style.color = "green";}
 
-    else if (dealerSum < sum && sum <= 21) { message = "Du Har Høyere Sum! Du Vant!!!"; messageEl.style.color = "green"; }
+    else if (dealerSum < sum && sum <= 21) { message = "Du Har Høyere Sum! Du Vant!!!"; spillerScore++; messageEl.style.color = "green"; }
 
-    else if (dealerSum > sum && dealerSum <= 21) { message = "Du Har Lavere Sum! Du Tapte!!!"; messageEl.style.color = "red"; }
+    else if (dealerSum > sum && dealerSum <= 21) { message = "Du Har Lavere Sum! Du Tapte!!!"; dealerScore++; messageEl.style.color = "red"; }
 
     else if (dealerSum > 21 && sum > 21) {message = "Begge Røyk! Ingen Vant!!!"; messageEl.style.color = "orange";}
 
@@ -155,6 +161,8 @@ function vinner() {
 
 
     messageEl.textContent = message;
+    spillerScoreEl.innerText = "Spillerens Score: " + spillerScore;
+    dealerScoreEl.innerText = "Dealerens Score: " + dealerScore;
 
 }
 
