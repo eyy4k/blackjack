@@ -60,6 +60,11 @@ function startGame() {
 
     renderGame()
 
+    if (sum === 21 || sum > 21) {
+        vinner()
+        return;
+    }
+ 
 
 }
 
@@ -75,14 +80,12 @@ function renderGame() {
         message = "Blackjack!!! Du Vant";
         messageEl.style.color = "green"
         hasBlackJack = true
-        setTimeout(dealersTur, 1000);
     }
 
     else if (sum > 21) {
         message = "Beklager, Du Røyk!";
         messageEl.style.color = "red"
         isAlive = false
-        setTimeout(dealersTur, 1000);
     }
 
     messageEl.innerText = message;
@@ -120,7 +123,8 @@ function newCard() {
     renderGame();
 
     if (sum >= 21) {
-        setTimeout(dealersTur, 1000);
+        vinner()
+        return;
     }
 }
 
@@ -134,8 +138,9 @@ function dealersTur() {
 
     while (dealerSum < 17) {
         let card = getRandomCard();
+        card = bestemEss(dealerCards, card);
         dealerCards.push(card);
-        dealerSum += card;
+        dealerSum = dealerCards.reduce((a, b) => a + b, 0);
     }
 
     dealerKortEl.textContent = "Dealerens kort: ";
@@ -167,10 +172,8 @@ let dealerSeiere = 0;
 
 function vinner() {
 
-    if (!isAlive) return;
 
-
-    if (dealerSum > 21) { message = "Dealer Røyk! Du Vant!!!"; spillerSeiere++; messageEl.style.color = "green"; }
+    if (dealerSum > 21 && sum <= 21) { message = "Dealer Røyk! Du Vant!!!"; spillerSeiere++; messageEl.style.color = "green"; }
 
     else if (dealerSum < sum && sum <= 21) { message = "Du Har Høyere Sum! Du Vant!!!"; spillerSeiere++; messageEl.style.color = "green"; }
 
@@ -178,7 +181,7 @@ function vinner() {
 
     else if (dealerSum > 21 && sum > 21) { message = "Begge Røyk! Ingen Vant!!!"; messageEl.style.color = "orange"; }
 
-    else if (sum > 21 && dealersSum <= 21) { message = "Du Røyk! Dealeren Vant!!!"; dealerSeiere++; messageEl.style.color = "red" }
+    else if (sum > 21 && dealerSum <= 21) { message = "Du Røyk! Dealeren Vant!!!"; dealerSeiere++; messageEl.style.color = "red" }
 
     else { message = "Uavgjort! Ingen Vant!!!"; messageEl.style.color = "blue"; }
 
@@ -222,14 +225,13 @@ function shuffleKort() {
 // Ess kan både være 1 og 11 //
 
 function bestemEss(hånd, kort) {
-
-    if (kort === 11) 
-        
-        {let total = hånd + 11;
-        return total > 21 ? 1 : 11; }
-             
+    if (kort === 11) {
+        let total = hånd.reduce((a, b) => a + b, 0) + 11;
+        return total > 21 ? 1 : 11;
+    }
     return kort;
 }
+
 
 // bytte mellom bakgrunner //
 
