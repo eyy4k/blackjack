@@ -125,10 +125,11 @@ section {
     justify-content: center;
     align-items: center;
     gap: 25px;
-   
+
 }
 
-.scorediv, .dealerdiv {
+.scorediv,
+.dealerdiv {
 
     width: 250px;
     background: goldenrod;
@@ -143,5 +144,3 @@ section {
     align-items: center;
 
 }
-
-

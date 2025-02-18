@@ -28,7 +28,7 @@ let spillerSeiereEl = document.querySelector("#spillSeiere")
 
 function getRandomCard() {
 
-    if (deck.length === 0) {kortstokker()}
+    if (deck.length === 0) { kortstokker() }
 
     return deck.pop();
 
@@ -42,7 +42,7 @@ function startGame() {
     hasBlackJack = false;
     dealersrunde = false;
 
-    if (deck.length < 10) {kortstokker()}
+    if (deck.length < 10) { kortstokker() }
 
     let firstCard = getRandomCard();
     let secondCard = getRandomCard();
@@ -64,7 +64,7 @@ function startGame() {
         vinner()
         return;
     }
- 
+
 
 }
 
@@ -116,7 +116,7 @@ function newCard() {
     card = bestemEss(cards, card);
 
 
-    
+
     cards.push(card)
     sum = cards.reduce((a, b) => a + b, 0);
 
@@ -198,17 +198,17 @@ function kortstokker() {
 
     deck = [];
 
-    for (let i = 0; i < 4; i++)
-         { for (let j = 2; j <= 14; j++)
-             { 
-                let kortverdi = j
-                if (kortverdi > 10) kortverdi = 10;
-                if (kortverdi === 14) kortverdi = 11
-                
-                deck.push(kortverdi);
-             } } 
+    for (let i = 0; i < 4; i++) {
+        for (let j = 2; j <= 14; j++) {
+            let kortverdi = j
+            if (kortverdi > 10) kortverdi = 10;
+            if (kortverdi === 14) kortverdi = 11
 
-     shuffleKort();
+            deck.push(kortverdi);
+        }
+    }
+
+    shuffleKort();
 
 }
 
@@ -216,7 +216,7 @@ function shuffleKort() {
 
     for (let i = deck.length - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));
-            [deck[i], deck[j]] = [deck[j], deck[i]];
+        [deck[i], deck[j]] = [deck[j], deck[i]];
 
     }
 
