@@ -50,13 +50,13 @@ function startGame() {
     secondCard = bestemEss(firstCard, secondCard);
 
     cards = [firstCard, secondCard];
-    sum = cards.reduce((a, b) => a + b, 0);
+    sum = cards[0] + cards[1]
 
 
     let dealerFirstCard = getRandomCard();
     let dealerSecondCard = getRandomCard();
     dealerCards = [dealerFirstCard, dealerSecondCard];
-    dealerSum = dealerCards.reduce((a, b) => a + b, 0);
+    dealerSum = dealerFirstCard + dealerSecondCard;
 
     renderGame()
 
@@ -115,10 +115,8 @@ function newCard() {
     let card = getRandomCard()
     card = bestemEss(cards, card);
 
-
-
     cards.push(card)
-    sum = cards.reduce((a, b) => a + b, 0);
+    sum += card;
 
     renderGame();
 
@@ -140,7 +138,7 @@ function dealersTur() {
         let card = getRandomCard();
         card = bestemEss(dealerCards, card);
         dealerCards.push(card);
-        dealerSum = dealerCards.reduce((a, b) => a + b, 0);
+        dealerSum += card;
     }
 
     dealerKortEl.textContent = "Dealerens kort: ";
@@ -225,11 +223,10 @@ function shuffleKort() {
 // Ess kan både være 1 og 11 //
 
 function bestemEss(hånd, kort) {
-    if (kort === 11) {
-        let total = hånd.reduce((a, b) => a + b, 0) + 11;
-        return total > 21 ? 1 : 11;
-    }
-    return kort;
+    if (kort !== 11) return kort;
+
+    let total = hand.reduce((a, b) => a + b, 0);
+    return total + 11 > 21 ? 1 : 11;
 }
 
 
