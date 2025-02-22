@@ -225,7 +225,7 @@ function shuffleKort() {
 function bestemEss(hånd, kort) {
     if (kort !== 11) return kort;
 
-    let total = (hand.length > 0) ? hand.reduce((a, b) => a + b, 0) : 0;
+    let total = (Array.isArray(hånd) && hånd.length > 0) ? hånd.reduce((a, b) => a + b, 0) : 0;
     return (total + 11 > 21) ? 1 : 11;
 }
 
