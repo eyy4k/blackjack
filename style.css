@@ -148,3 +148,69 @@ section {
     align-items: center;
 
 }
+
+@media (max-width: 650px) {
+
+
+    .bhead {
+        font-size: 50px;
+    }
+
+    .bjp {
+        font-size: 30px;
+    }
+
+    section {
+        padding: 20px;
+    }
+
+    button {
+        width: 200px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 500px) {
+    .bhead {
+        font-size: 40px;
+    }
+
+    .bjp {
+        font-size: 25px;
+    }
+
+    section {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    button {
+        width: 180px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 300px) {
+    .bhead {
+        font-size: 30px;
+    }
+
+    .bjp {
+        font-size: 20px;
+    }
+
+    section {
+        padding: 10px;
+        margin: 5px;
+    }
+
+    button {
+        width: 150px;
+        font-size: 12px;
+    }
+
+    #dealerSeiere,
+    #spillSeiere {
+        font-size: 15px;
+    }
+}
