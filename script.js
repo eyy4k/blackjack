@@ -171,7 +171,7 @@ let dealerSeiere = 0;
 function vinner() {
 
 
-    if (dealerSum > 21 && sum <= 21) { message = "Dealer Røyk! Du Vant!!!"; spillerSeiere++; messageEl.style.color = "green"; }
+    if (dealerSum > 21 && sum <= 21) { message = "Dealer Røyk! Du Vant!!!"; spillerSeiere++; messageEl.style.color = "green";   dealersrunde = true;}
 
     else if (dealerSum < sum && sum <= 21) { message = "Du Har Høyere Sum! Du Vant!!!"; spillerSeiere++; messageEl.style.color = "green"; }
 
