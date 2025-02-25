@@ -134,6 +134,10 @@ function dealersTur() {
 
     dealersrunde = true
 
+    if (sum > 21) {
+        return;
+    }
+
     while (dealerSum < 17) {
         let card = getRandomCard();
         card = bestemEss(dealerCards, card);
@@ -159,7 +163,9 @@ function dealersTur() {
     bheadEl.innerHTML = "Trykk På Start Spillet For Ny Runde"
     bheadEl.style.fontSize = "40px"
 
-    vinner()
+    if (sum <= 21) {
+        vinner();
+    }
 
 }
 
